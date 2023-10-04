@@ -1,37 +1,36 @@
-﻿const int students = 10;
-const int gradeLength = 4;
-const int minAverage = 7;
+	public static void Main()
+	{
+		float[] notas = new float[4];
+        float[] somaNotas = new float[10];
+        float[] mediaNotas = new float[10];
+        int i = 0;
+        int numAlunos = 10;
+        int aluno = 0;
+        int maiorQueSete = 0;
 
-float[,] inputs = new float[students, gradeLength];
+        while (aluno < numAlunos) {
+            Console.WriteLine($"Digite as 4 notas do aluno {(aluno + 1)}: ");
 
-for (int studentId = 0; studentId < students; studentId++)
-{
-    for (int gradeId = 0; gradeId < gradeLength; gradeId++)
-    {
-
-        float input;
-        while (true)
-        {
-            Console.Write($"Digite a  {gradeId + 1}º nota do {studentId + 1}º aluno: ");
-            if (float.TryParse(Console.ReadLine(), out input))
-            {
-                inputs[studentId, gradeId] = input;
-                break;
+            while (i <= 3) {
+                notas[i] = Convert.ToSingle(Console.ReadLine());
+                i++;
             }
-            else
-            {
-                Console.WriteLine("A nota digitada é inválida!");
-            }
+
+            somaNotas[aluno] = notas[0] + notas[1] + notas[2] + notas[3];
+            mediaNotas[aluno] = somaNotas[aluno] / 4;
+            i = 0;
+            
+            aluno++;
         }
-    }
 
-}
+        aluno = 0;
 
-for (int i = 0; i < students; i++)
-{
-    var nota = Enumerable.Range(0, inputs.GetLength(1)).Select(g => inputs[i, g]).Average();
-    if (nota >= minAverage)
-    {
-        Console.WriteLine($"Aluno {i + 1} nota: {nota}");
-    }
-}
+        while (aluno < numAlunos) {
+            if (mediaNotas[aluno] >= 7.0) {
+                maiorQueSete++;
+            }
+            aluno++;
+        }
+
+        Console.WriteLine($"O número de alunos que possuem uma nota maior que sete é {maiorQueSete}");
+	}
