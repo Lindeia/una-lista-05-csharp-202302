@@ -1,4 +1,6 @@
- char[] caracteres = new char[10];
+  public static void Main()
+    {
+        char[] caracteres = new char[10];
         int numeroConsoantes = 0;
         
         Console.WriteLine("Digite 10 caracteres:");
@@ -24,6 +26,11 @@
         Console.WriteLine($"\nTotal de consoantes lidas: {numeroConsoantes}");
     }
 
+    static bool ehConsoante(char c)
+    {
+        char[] consoantes = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
+        return Array.Exists(consoantes, consoante => consoante == char.ToLower(c));
+    }
     static bool ehConsoante(char c)
     {
         char[] consoantes = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
